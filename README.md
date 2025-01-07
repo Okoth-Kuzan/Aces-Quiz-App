@@ -2,32 +2,40 @@
 This is a Flask-based interactive quiz application where users can answer multiple-choice questions, with features including scoring, time limits, feedback, and user authentication.
 Project Structure:
 
-quiz_app/
+ quiz_app/
+│
 ├── app/
-│   ├── __init__.py
-│   ├── models.py
-│   ├── views.py
-│   ├── forms.py
-│   └── utils.py  # For helper functions
-├── templates/
-│   ├── index.html
-│   ├── quiz.html
-│   ├── results.html
-│   ├── login.html
-│   ├── register.html
-│   └── base.html  # Base template for layout
-├── static/
-│   ├── css/
-│   │   ├── style.css
-│   │   └── bootstrap.min.css  # If using Bootstrap
-│   ├── js/
-│   │   ├── script.js
-│   │   └── bootstrap.min.js  # If using Bootstrap
-├── requirements.txt
-├── .env  # For environment variables
-└── tests/
-    ├── test_models.py
-    ├── test_views.py
+│   ├── __init__.py        # Initialize Flask app and extensions
+│   ├── models.py          # Database models
+│   ├── routes.py          # Routes and view logic
+│   ├── forms.py           # Forms for authentication, quizzes, etc.
+│   ├── static/            # Static files (CSS, JS, images)
+│   │   ├── css/
+│   │   │   └── styles.css
+│   │   └── js/
+│   │       └── scripts.js
+│   └── templates/         # HTML templates
+│       ├── base.html      # Base template with common layout
+│       ├── auth/
+│       │   ├── login.html
+│       │   └── register.html
+│       ├── quiz/
+│       │   ├── index.html # Quiz dashboard
+│       │   └── result.html
+│       └── error.html     # Error page
+│
+├── migrations/            # Database migrations (if using Flask-Migrate)
+│
+├── tests/
+│   ├── test_auth.py       # Tests for authentication
+│   ├── test_quiz.py       # Tests for quiz functionality
+│   └── conftest.py        # Fixtures for testing
+│
+├── config.py              # Configuration settings
+├── requirements.txt       # Python dependencies
+├── run.py                 # Run the Flask application
+└── README.md              # Project documentation
+
 Getting Started
 
 Prerequisites
