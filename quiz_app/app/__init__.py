@@ -2,20 +2,20 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import CSRFProtect
 
+# Initialize extensions
 db = SQLAlchemy()
 csrf = CSRFProtect()
 
-def create_app():
+def create_app(config_name='config.DevelopmentConfig'):
     app = Flask(__name__)
+    app.config.from_object(config_name)
 
-    app.config['SECRET_KEY'] = 'your_secret_key'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///quiz.db'
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
+    # Initialize extensions
     db.init_app(app)
     csrf.init_app(app)
 
-    from .routes import main
-    app.register_blueprint(main)
+    # Import and register blueprints
+    from .routes import main_bp
+    app.register_blueprint(main_bp)
 
     return app

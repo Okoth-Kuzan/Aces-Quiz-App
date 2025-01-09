@@ -1,14 +1,25 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, redirect, url_for, flash
+from .forms import LoginForm, RegistrationForm
+from .models import User
 
-main = Blueprint('main', __name__)
+main_bp = Blueprint('main', __name__)
 
-@main.route('/')
+@main_bp.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('quiz/index.html')
 
-@main.route('/quiz', methods=['GET', 'POST'])
-def quiz():
-    if request.method == 'POST':
-        # Handle form submission (quiz logic)
-        pass
-    return render_template('quiz.html')
+@main_bp.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        flash('Login successful!', 'success')
+        return redirect(url_for('main.home'))
+    return render_template('auth/login.html', form=form)
+
+@main_bp.route('/register', methods=['GET', 'POST'])
+def register():
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        flash('Registration successful!', 'success')
+        return redirect(url_for('main.login'))
+    return render_template('auth/register.html', form=form)
