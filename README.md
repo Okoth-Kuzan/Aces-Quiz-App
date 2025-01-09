@@ -52,14 +52,6 @@ cd Aces-Quiz-App
 pip install -r requirements.txt
 Configuration
 
-Create a file named .env in the project root directory.
-Add the following environment variables to .env:
-SECRET_KEY=your_secret_key
-DATABASE_URL=postgres://user:password@localhost/quiz_app
-Replace the placeholders with your own values.
-SECRET_KEY: A random string used for cryptographic signing.
-DATABASE_URL: The connection string for your PostgreSQL database.
-Database Setup
 
 Ensure you have a PostgreSQL database running.
 Run the following command to create the database tables (if they don't exist):
